@@ -1,61 +1,18 @@
 ﻿#include <iostream>
 #include <string>
-#include "clear.h"
-#include "color.h"
-#include "game_state.h"
-#include "persistence.h"
-#include "input_validation.h"
-#include "settings.h"
-#include "classic_game.h"
-
-
-void wait_for_input() {
-    std::cout << Color::yellow << "\tВведите что-нибудь, чтобы продолжить >> " << Color::reset;
-    std::string dummy;
-    std::getline(std::cin, dummy);
-}
-
-// Заглушки — будут заменены позже
-void show_classic_game() { std::cout << "Classic game (stub)\n"; wait_for_input(); }
-void show_all_or_nothing() { std::cout << "All or nothing (stub)\n"; wait_for_input(); }
-void show_xp_game() { std::cout << "XP game (stub)\n"; wait_for_input(); }
-void show_podskaz_game() { std::cout << "Podskaz game (stub)\n"; wait_for_input(); }
-void show_help() { std::cout << "Help (stub)\n"; wait_for_input(); }
-void show_settings() { std::cout << "Settings (stub)\n"; wait_for_input(); }
-void show_stats() { std::cout << "Stats (stub)\n"; wait_for_input(); }
-void show_achievements() { std::cout << "Achievements (stub)\n"; wait_for_input(); }
-void show_about() { std::cout << "About (stub)\n"; wait_for_input(); }
-void show_logo_author() { std::cout << "Logo author (stub)\n"; wait_for_input(); }
-void show_saves_menu() { std::cout << "Saves menu (stub)\n"; wait_for_input(); }
-
-
-
-void show_main_menu() {
-    std::cout << Color::cyan << "\n\t\t=== 0/1 Step ===\n" << Color::reset;
-    std::cout << Color::white
-        << "\t---/===/  ГЛАВНОЕ МЕНЮ:  \\===\\---\t\n"
-        << "\tВозможные действия:\n"
-        << "\t+->\"1\" - Классическая игра\n"
-        << "\t+->\"2\" - Режим \"Всё или ничего\"\n"
-        << "\t+->\"3\" - Режим \"ЖИЗНИ\"\n"
-        << "\t+->\"4\" - Режим игры \"С подсказками\"\n"
-        << "\t+->\"5\" - Справка\n"
-        << "\t+->\"6\" - Настройки\n"
-        << "\t+->\"7\" - Статистика\n"
-        << "\t+->\"8\" - Достижения\n"
-        << "\t+=>\"9\" - \"От автора\"\n"
-        << "\t-->\"0\" - Выход\n"
-        << Color::yellow
-        << "\n\t*Все остальные команды перезапускают Игру\n"
-        << Color::reset;
-}
+#include <fstream>
+#include <direct.h>
+#include "game_core.h"
+#include "system_utils.h"
+#include "ui_elements.h"
+#include "logo.h"
 
 
 int main() {
     system("chcp 65001");
-
     setlocale(LC_ALL, "Russian");
     GameState state;
+
     // Пытаемся загрузить сохранение
     if (!load_game(state, "save_data.txt")) {
         // Если не получилось — state уже в базовом состоянии
@@ -63,71 +20,132 @@ int main() {
     }
 
     bool game_running = true;
-    clear_screen();
-    std::cout << Color::cyan << "\n\t\t=== 0/1 Step ===\n" << Color::reset;
-    std::cout << "\tИгра запущена впервые!\n\tНажмите \"5\" для Справки.\n";
-    wait_for_input();
+    clear_screen(state.auto_clear);
 
+    show_logo("alpha");
+
+    std::cout << Color::cyan << "\n\t\t=== 0/1 Step ===\n" << Color::reset;
+    std::cout << "\tИгра запущена впервые!\n\tМожете нажатием \"5\" вызвать Справку.\n";
+    wait_continue();
+
+    // Основной цикл игры
     while (game_running) {
-        clear_screen();
-        show_main_menu();
+
+        // Дебажить тут
+
+        clear_screen(state.auto_clear);
+        state.launch_count++;
+        autosave(state);
+
+        if (state.intro_type == 1) {
+            show_logo("alpha");
+            if (state.achievements.size() > 1) {
+                state.achievements[1] = true;
+            }
+        }
+        else if (state.intro_type == 2) {
+            show_logo("big");
+            if (state.achievements.size() > 2) {
+                state.achievements[2] = true; 
+            }
+        }
+        else {
+            show_logo("base");
+        }
+
+        std::cout << Color::cyan << "\n\t\t=== 0/1 Step ===\n" << Color::reset;
+        std::cout << Color::white
+            << "\t---/===/  ГЛАВНОЕ МЕНЮ:  \\===\\---\t\n"
+            << "\tВозможные действия:\n"
+            << "\t+->\"1\" - Классическая игра\n"
+            << "\t+->\"2\" - Режим \"Всё или ничего\"\n"
+            << "\t+->\"3\" - Режим \"ЖИЗНИ\"\n"
+            << "\t+->\"4\" - Режим игры \"С подсказками\"\n"
+            << "\t+->\"5\" - Справка\n"
+            << "\t+->\"6\" - Настройки\n"
+            << "\t+->\"7\" - Статистика\n"
+            << "\t+->\"8\" - Достижения\n"
+            << "\t+=>\"9\" - \"От автора\"\n"
+            << "\t-->\"0\" - Выход\n"
+            << Color::yellow
+            << "\n\t*Все остальные команды перезапускают Игру\n"
+            << Color::reset;
 
         std::cout << Color::yellow << "\n\t Выбор действия >> " << Color::reset;
         std::string choice;
         std::getline(std::cin, choice);
 
-        if (choice == "1") {
-            clear_screen();
+        if (choice.empty()) {
+            // Микро-пасхалка: просто нажал Enter
+            if (state.achievements.size() > 7) {
+                state.achievements[7] = true;
+            }
+            continue;
+        }
+        else if (choice == "1") {
+            clear_screen(state.auto_clear);
             run_classic_game(state);
+            autosave(state);
         }
         else if (choice == "2") {
-            clear_screen();
-            show_all_or_nothing();
+            clear_screen(state.auto_clear);
+            run_all_or_nothing(state);
+            autosave(state);
         }
         else if (choice == "3") {
-            clear_screen();
-            show_xp_game();
+            clear_screen(state.auto_clear);
+            run_lives_game(state);
+            autosave(state);
         }
         else if (choice == "4") {
-            clear_screen();
-            show_podskaz_game();
+            clear_screen(state.auto_clear);
+            run_hints_game(state);
+            autosave(state);
         }
         else if (choice == "5") {
-            clear_screen();
-            show_help();
+            clear_screen(state.auto_clear);
+            show_help(state);
+            autosave(state);
         }
         else if (choice == "6") {
-            clear_screen();
+            clear_screen(state.auto_clear);
             show_settings_menu(state);
+            autosave(state);
         }
         else if (choice == "7") {
-            clear_screen();
-            show_stats();
+            clear_screen(state.auto_clear);
+            show_stats(state);
+            autosave(state);
         }
         else if (choice == "8") {
-            clear_screen();
-            show_achievements();
+            clear_screen(state.auto_clear);
+            show_achievements_menu(state);
+            autosave(state);
         }
         else if (choice == "9") {
-            clear_screen();
-            show_about();
+            clear_screen(state.auto_clear);
+            show_credits(state);
+            autosave(state);
         }
         else if (choice == "10") {
-            clear_screen();
-            show_logo_author();
+            clear_screen(state.auto_clear);
+            show_logo_author(state);
+            autosave(state);
         }
         else if (choice == "11") {
-            clear_screen();
-            show_saves_menu();
+            clear_screen(state.auto_clear);
+            show_saves_menu(state);
+            autosave(state);
         }
         else if (choice == "0") {
-            clear_screen();
-            std::cout << Color::red << "\n\tВыход из программы...\n" << Color::reset;
+            clear_screen(state.auto_clear);
+            autosave(state);
+            perform_exit(state);
             game_running = false;
         }
         else {
-            std::cout << Color::red << "\n\tНеизвестная команда. Возврат в меню...\n" << Color::reset;
-            wait_for_input();
+            std::cout << Color::red << "\n\tНеизвестная команда. " << Color::yellow << "Возврат в меню...\n" << Color::reset;
+            wait_continue();
         }
     }
 
