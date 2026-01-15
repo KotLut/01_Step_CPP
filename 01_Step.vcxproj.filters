@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d748a834-e100-466b-a6f3-de66e53de9be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Core">
+      <UniqueIdentifier>{0c4ea3b2-d30a-4b2a-8b97-4c950df17ef7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\System">
+      <UniqueIdentifier>{4d56f594-0b4a-4032-8b9b-ddb0218a0c0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\UI">
+      <UniqueIdentifier>{7bd6d852-6351-4b9a-adc6-ef21e696f366}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Logo">
+      <UniqueIdentifier>{8a9c4665-03a2-4db5-8058-f0fc22e4e1fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\events">
+      <UniqueIdentifier>{782bc4d9-9440-4e82-80b2-63733d9252f8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="game_core.h">
+      <Filter>src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="system_utils.h">
+      <Filter>src\System</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_elements.h">
+      <Filter>src\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="logo.h">
+      <Filter>src\Logo</Filter>
+    </ClInclude>
+    <ClInclude Include="events.h">
+      <Filter>src\events</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="game_core.cpp">
+      <Filter>src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="system_utils.cpp">
+      <Filter>src\System</Filter>
+    </ClCompile>
+    <ClCompile Include="ui_elements.cpp">
+      <Filter>src\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="logo.cpp">
+      <Filter>src\Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="events.cpp">
+      <Filter>src\events</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

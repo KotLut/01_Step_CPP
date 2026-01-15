@@ -12,6 +12,7 @@ namespace Color {
     inline const char* blue =   "\033[34m";
     inline const char* cyan =   "\033[36m";
 	inline const char* white =  "\033[37m";
+    inline const char* brown = "\033[38;5;94m";
 }
 
 // »ндексы достижений (строки 8Ц22)

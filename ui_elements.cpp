@@ -295,6 +295,16 @@ void show_help_saves() {
     wait_continue();
 }
 
+void show_help_event() {
+    clear_screen();
+    std::cout << Color::white
+        << "\n\t\t| (12) Подробности о Праздничном эвенте |\n\n"
+        << "\t\tВ этом специальном режиме вы увидите\n"
+        << "\t\tпраздничную ёлочку, созданную из символов ASCII.\n"
+        << "\t\tЭто небольшой подарок от автора!\n";
+    wait_continue();
+}
+
 // --- Главное меню справки ---
 void show_help(GameState& state) {
     clear_screen(state.auto_clear);
@@ -312,7 +322,8 @@ void show_help(GameState& state) {
         << "\t+->\"8\" - Достижениях\n"
         << "\t+=>\"9\" - блоке \"От автора\"\n"
         << "\t+->\"0\" - выходе из Игры\n"
-        << "\t-->\"11\" - сохранениях Игры\n"
+        << "\t+->\"11\" - сохранениях Игры\n"
+        << "\t-->\"12\" - Праздничный эвент\n"
         << Color::yellow
         << "\n\t*Все остальные команды возвращают в Главное меню\n"
         << "\n\tО каком разделе вы хотите узнать подробности? >> " << Color::reset;
@@ -331,6 +342,7 @@ void show_help(GameState& state) {
     else if (choice == "9") show_help_author();
     else if (choice == "0") show_help_exit();
     else if (choice == "11") show_help_saves();
+    else if (choice == "12") show_help_event();
     else {
         // Возврат в главное меню (просто выход из функции)
         return;
@@ -379,7 +391,7 @@ void show_achievements_menu(const GameState& state) {
 
     std::cout << Color::blue << "\n\tРЕДКИЕ:\n" << Color::reset;
     std::cout << "\t  " << (state.achievements.size() > 7 && state.achievements[7] ? "[+]" : "[ ]")
-        << " Микро-пасхалка ("")\n";
+        << " Микро-пасхалка (\"\")\n";
     std::cout << "\t  " << (state.achievements.size() > 8 && state.achievements[8] ? "[+]" : "[ ]")
         << " Ввёл \"10\" в меню\n";
     std::cout << "\t  " << (state.achievements.size() > 9 && state.achievements[9] ? "[+]" : "[ ]")
