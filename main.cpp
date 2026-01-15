@@ -6,6 +6,7 @@
 #include "system_utils.h"
 #include "ui_elements.h"
 #include "logo.h"
+#include "events.h"
 
 
 int main() {
@@ -65,7 +66,9 @@ int main() {
             << "\t+->\"6\" - Настройки\n"
             << "\t+->\"7\" - Статистика\n"
             << "\t+->\"8\" - Достижения\n"
-            << "\t+=>\"9\" - \"От автора\"\n"
+            << "\t+->\"9\" - \"От автора\"\n"
+            << "\t+->\"11\" - Сохранения\n"
+            << "\t+->\"12\" - Праздничный эвент\n"
             << "\t-->\"0\" - Выход\n"
             << Color::yellow
             << "\n\t*Все остальные команды перезапускают Игру\n"
@@ -137,6 +140,10 @@ int main() {
             show_saves_menu(state);
             autosave(state);
         }
+		else if (choice == "12") {
+			clear_screen();
+			show_event();
+		}
         else if (choice == "0") {
             clear_screen(state.auto_clear);
             autosave(state);

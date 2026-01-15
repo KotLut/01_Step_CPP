@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <string>
 #include <cctype>
 #include <fstream>
@@ -21,7 +21,7 @@ void clear_screen(bool auto_clear) {
 }
 
 void wait_continue() {
-    std::cout << Color::yellow << "\n\tВведите Enter, чтобы продолжить... " << Color::reset;
+    std::cout << Color::yellow << "\n\tР’РІРµРґРёС‚Рµ Enter, С‡С‚РѕР±С‹ РїСЂРѕРґРѕР»Р¶РёС‚СЊ... " << Color::reset;
     std::string dummy;
     std::getline(std::cin, dummy);
 }
@@ -45,7 +45,7 @@ int get_valid_int(int min_value, int max_value) {
         std::getline(std::cin, line);
         line = trim(line);
         if (line.empty()) {
-            std::cout << Color::red << "\tПустой ввод. Попробуйте снова.\n" << Color::reset;
+            std::cout << Color::red << "\tРџСѓСЃС‚РѕР№ РІРІРѕРґ. РџРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°.\n" << Color::reset;
             continue;
         }
 
@@ -65,41 +65,41 @@ int get_valid_int(int min_value, int max_value) {
         }
 
         if (!is_number) {
-            std::cout << Color::red << "\tНекорректный ввод. Ожидается число.\n" << Color::reset;
+            std::cout << Color::red << "\tРќРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ. РћР¶РёРґР°РµС‚СЃСЏ С‡РёСЃР»Рѕ.\n" << Color::reset;
             continue;
         }
 
         int value = std::stoi(line);
 
-        // Проверка минимального значения
+        // РџСЂРѕРІРµСЂРєР° РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ
         if (value < min_value) {
             std::cout << Color::yellow
-                << "\tЗначение меньше минимального (" << min_value << "). "
-                << "Автоприсваивание: " << min_value << "\n" << Color::reset;
+                << "\tР—РЅР°С‡РµРЅРёРµ РјРµРЅСЊС€Рµ РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ (" << min_value << "). "
+                << "РђРІС‚РѕРїСЂРёСЃРІР°РёРІР°РЅРёРµ: " << min_value << "\n" << Color::reset;
             return min_value;
         }
 
-        // Проверка максимального значения
+        // РџСЂРѕРІРµСЂРєР° РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ
         if (value > max_value) {
             std::cout << Color::yellow
-                << "\tЗначение превышает допустимый максимум (" << max_value << "). "
-                << "Автоприсваивание: " << max_value << "\n" << Color::reset;
+                << "\tР—РЅР°С‡РµРЅРёРµ РїСЂРµРІС‹С€Р°РµС‚ РґРѕРїСѓСЃС‚РёРјС‹Р№ РјР°РєСЃРёРјСѓРј (" << max_value << "). "
+                << "РђРІС‚РѕРїСЂРёСЃРІР°РёРІР°РЅРёРµ: " << max_value << "\n" << Color::reset;
             return max_value;
         }
 
-        // Спецслучай: 101–1000 требует подтверждени
+        // РЎРїРµС†СЃР»СѓС‡Р°Р№: 101вЂ“1000 С‚СЂРµР±СѓРµС‚ РїРѕРґС‚РІРµСЂР¶РґРµРЅРё
         if (value > 100) {
             std::cout << Color::yellow
-                << "\tВы ввели большое количество уровней (" << value << "). "
-                << "Это может занять много времени.\n"
-                << "\tВы точно хотите продолжить? (y/n) >> " << Color::reset;
+                << "\tР’С‹ РІРІРµР»Рё Р±РѕР»СЊС€РѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СѓСЂРѕРІРЅРµР№ (" << value << "). "
+                << "Р­С‚Рѕ РјРѕР¶РµС‚ Р·Р°РЅСЏС‚СЊ РјРЅРѕРіРѕ РІСЂРµРјРµРЅРё.\n"
+                << "\tР’С‹ С‚РѕС‡РЅРѕ С…РѕС‚РёС‚Рµ РїСЂРѕРґРѕР»Р¶РёС‚СЊ? (y/n) >> " << Color::reset;
             std::string confirm;
             std::getline(std::cin, confirm);
             if (confirm == "y" || confirm == "Y") {
                 return value;
             }
             else {
-                std::cout << Color::yellow << "\tПожалуйста, введите новое значение.\n" << Color::reset;
+                std::cout << Color::yellow << "\tРџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРµРґРёС‚Рµ РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ.\n" << Color::reset;
                 continue;
             }
         }
@@ -121,7 +121,7 @@ bool get_valid_binary_choice() {
             return true;
         }
         else {
-            std::cout << Color::red << "\tОжидается \"0\" или \"1\". Попробуйте снова\t >> " << Color::reset;
+            std::cout << Color::red << "\tРћР¶РёРґР°РµС‚СЃСЏ \"0\" РёР»Рё \"1\". РџРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°\t >> " << Color::reset;
         }
     }
 }
@@ -130,11 +130,11 @@ bool get_valid_binary_choice() {
 bool save_game(const GameState& state, const std::string& filename) {
     std::ofstream file(filename);
     if (!file.is_open()) {
-        std::cout << Color::red << "Ошибка: не удалось создать файл сохранения!\n" << Color::reset;
+        std::cout << Color::red << "РћС€РёР±РєР°: РЅРµ СѓРґР°Р»РѕСЃСЊ СЃРѕР·РґР°С‚СЊ С„Р°Р№Р» СЃРѕС…СЂР°РЅРµРЅРёСЏ!\n" << Color::reset;
         return false;
     }
 
-    // Порядок должен быть точным
+    // РџРѕСЂСЏРґРѕРє РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ С‚РѕС‡РЅС‹Рј
     file << state.launch_count << "\n";
     file << state.exit_delay_sec << "\n";
     file << state.level_count << "\n";
@@ -147,7 +147,7 @@ bool save_game(const GameState& state, const std::string& filename) {
     file << state.draw_count << "\n";
     file << state.loss_count << "\n";
 
-    // Достижения (15 штук)
+    // Р”РѕСЃС‚РёР¶РµРЅРёСЏ (15 С€С‚СѓРє)
     for (size_t i = 0; i < state.achievements.size(); ++i) {
         file << (state.achievements[i] ? 1 : 0) << "\n";
     }
@@ -159,20 +159,20 @@ bool save_game(const GameState& state, const std::string& filename) {
 void create_default_save(const std::string& filename) {
     GameState default_state;
     save_game(default_state, filename);
-    std::cout << Color::green << "\n\tСоздано новое сохранение.\n" << Color::reset;
+    std::cout << Color::green << "\n\tРЎРѕР·РґР°РЅРѕ РЅРѕРІРѕРµ СЃРѕС…СЂР°РЅРµРЅРёРµ.\n" << Color::reset;
 }
 
 bool load_game(GameState& state, const std::string& filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
-        std::cout << Color::yellow << "\n\tФайл сохранения не найден. Создаём новый...\n" << Color::reset;
+        std::cout << Color::yellow << "\n\tР¤Р°Р№Р» СЃРѕС…СЂР°РЅРµРЅРёСЏ РЅРµ РЅР°Р№РґРµРЅ. РЎРѕР·РґР°С‘Рј РЅРѕРІС‹Р№...\n" << Color::reset;
         create_default_save(filename);
-        std::cout << Color::green << "\n\tФайл сохранения \"" << filename << "\" успешно создан!\n" << Color::reset;
+        std::cout << Color::green << "\n\tР¤Р°Р№Р» СЃРѕС…СЂР°РЅРµРЅРёСЏ \"" << filename << "\" СѓСЃРїРµС€РЅРѕ СЃРѕР·РґР°РЅ!\n" << Color::reset;
 
-        // Загружаем только что созданный файл в state
+        // Р—Р°РіСЂСѓР¶Р°РµРј С‚РѕР»СЊРєРѕ С‡С‚Рѕ СЃРѕР·РґР°РЅРЅС‹Р№ С„Р°Р№Р» РІ state
         file.open(filename);
         if (!file.is_open()) {
-            // Крайний случай: не удалось создать файл — сбрасываем в памяти
+            // РљСЂР°Р№РЅРёР№ СЃР»СѓС‡Р°Р№: РЅРµ СѓРґР°Р»РѕСЃСЊ СЃРѕР·РґР°С‚СЊ С„Р°Р№Р» вЂ” СЃР±СЂР°СЃС‹РІР°РµРј РІ РїР°РјСЏС‚Рё
             state = GameState();
             return false;
         }
@@ -191,19 +191,19 @@ bool load_game(GameState& state, const std::string& filename) {
             }
         }
         catch (...) {
-            // Игнорируем некорректные строки
+            // РРіРЅРѕСЂРёСЂСѓРµРј РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Рµ СЃС‚СЂРѕРєРё
         }
     }
     file.close();
 
     if (values.size() < 25) {
-        std::cout << Color::red << "\n\tОшибка: сохранение повреждено. " << Color::green << "Создаём новое.\n" << Color::reset;
+        std::cout << Color::red << "\n\tРћС€РёР±РєР°: СЃРѕС…СЂР°РЅРµРЅРёРµ РїРѕРІСЂРµР¶РґРµРЅРѕ. " << Color::green << "РЎРѕР·РґР°С‘Рј РЅРѕРІРѕРµ.\n" << Color::reset;
         create_default_save(filename);
 
-        // Загружаем новое сохранение
+        // Р—Р°РіСЂСѓР¶Р°РµРј РЅРѕРІРѕРµ СЃРѕС…СЂР°РЅРµРЅРёРµ
         std::ifstream new_file(filename);
         if (!new_file.is_open()) {
-            state = GameState(); // обнуляем прогресс
+            state = GameState(); // РѕР±РЅСѓР»СЏРµРј РїСЂРѕРіСЂРµСЃСЃ
             return false;
         }
         values.clear();
@@ -220,12 +220,12 @@ bool load_game(GameState& state, const std::string& filename) {
         }
         new_file.close();
         if (values.size() < 25) {
-            state = GameState(); // последняя надежда
+            state = GameState(); // РїРѕСЃР»РµРґРЅСЏСЏ РЅР°РґРµР¶РґР°
             return false;
         }
     }
 
-    // Заполняем GameState
+    // Р—Р°РїРѕР»РЅСЏРµРј GameState
     state.launch_count = values[0];
     state.exit_delay_sec = values[1];
     state.level_count = values[2];
@@ -256,22 +256,22 @@ void perform_exit(const GameState& state) {
     clear_screen(state.auto_clear);
 
     std::cout << Color::red
-        << "\n\t|    ИНИЦИАЛИЗИРОВАН\t|"
-        << "\n\t|  ВЫХОД ИЗ ПРОГРАММЫ!\t|"
-        << "\n\tПРОГРАММА ЗАКРОЕТСЯ ЧЕРЕЗ:"
+        << "\n\t|    РРќРР¦РРђР›РР—РР РћР’РђРќ\t|"
+        << "\n\t|  Р’Р«РҐРћР” РР— РџР РћР“Р РђРњРњР«!\t|"
+        << "\n\tРџР РћР“Р РђРњРњРђ Р—РђРљР РћР•РўРЎРЇ Р§Р•Р Р•Р—:"
         << Color::reset;
 
     int delay = state.exit_delay_sec;
     for (int sec = delay; sec >= 1; --sec) {
         std::string word;
         if (sec == 1) {
-            word = "секунду";
+            word = "СЃРµРєСѓРЅРґСѓ";
         }
         else if (sec >= 2 && sec <= 4) {
-            word = "секунды";
+            word = "СЃРµРєСѓРЅРґС‹";
         }
         else {
-            word = "секунд";
+            word = "СЃРµРєСѓРЅРґ";
         }
         std::cout << "\n\t     " << sec << "\t" << word;
         std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -284,7 +284,7 @@ void perform_exit(const GameState& state) {
 }
 
 void show_saves_menu(GameState& state) {
-    // Достижение: заход в меню сохранений
+    // Р”РѕСЃС‚РёР¶РµРЅРёРµ: Р·Р°С…РѕРґ РІ РјРµРЅСЋ СЃРѕС…СЂР°РЅРµРЅРёР№
     if (state.achievements.size() > 6) {
         state.achievements[6] = true;
     }
@@ -293,51 +293,51 @@ void show_saves_menu(GameState& state) {
     while (in_saves) {
         clear_screen(state.auto_clear);
         std::cout << Color::white
-            << "\n\t---/===/    СОХРАНЕНИЯ    \\===\\---\n"
-            << "\tВозможные действия:\n"
-            << "\t+->\"1\" - Сохранить текущий прогресс\n"
-            << "\t+->\"2\" - Загрузить прогресс из файла\n"
-            << "\t+->\"3\" - Сбросить к значениям по умолчанию\n"
-            << "\t-->\"0\" - Назад\n"
+            << "\n\t---/===/    РЎРћРҐР РђРќР•РќРРЇ    \\===\\---\n"
+            << "\tР’РѕР·РјРѕР¶РЅС‹Рµ РґРµР№СЃС‚РІРёСЏ:\n"
+            << "\t+->\"1\" - РЎРѕС…СЂР°РЅРёС‚СЊ С‚РµРєСѓС‰РёР№ РїСЂРѕРіСЂРµСЃСЃ\n"
+            << "\t+->\"2\" - Р—Р°РіСЂСѓР·РёС‚СЊ РїСЂРѕРіСЂРµСЃСЃ РёР· С„Р°Р№Р»Р°\n"
+            << "\t+->\"3\" - РЎР±СЂРѕСЃРёС‚СЊ Рє Р·РЅР°С‡РµРЅРёСЏРј РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ\n"
+            << "\t-->\"0\" - РќР°Р·Р°Рґ\n"
             << Color::yellow
-            << "\n\tВыбор действия >> " << Color::reset;
+            << "\n\tР’С‹Р±РѕСЂ РґРµР№СЃС‚РІРёСЏ >> " << Color::reset;
 
         std::string choice;
         std::getline(std::cin, choice);
 
         if (choice == "1") {
             if (save_game(state)) {
-                std::cout << Color::green << "\n\tПрогресс успешно сохранён!\n" << Color::reset;
+                std::cout << Color::green << "\n\tРџСЂРѕРіСЂРµСЃСЃ СѓСЃРїРµС€РЅРѕ СЃРѕС…СЂР°РЅС‘РЅ!\n" << Color::reset;
             }
             else {
-                std::cout << Color::red << "\n\tОшибка при сохранении!\n" << Color::reset;
+                std::cout << Color::red << "\n\tРћС€РёР±РєР° РїСЂРё СЃРѕС…СЂР°РЅРµРЅРёРё!\n" << Color::reset;
             }
             wait_continue();
         }
         else if (choice == "2") {
             if (load_game(state)) {
-                std::cout << Color::green << "\n\tПрогресс успешно загружен!\n" << Color::reset;
+                std::cout << Color::green << "\n\tРџСЂРѕРіСЂРµСЃСЃ СѓСЃРїРµС€РЅРѕ Р·Р°РіСЂСѓР¶РµРЅ!\n" << Color::reset;
             }
             else {
-                std::cout << Color::yellow << "\n\tСоздано новое сохранение.\n" << Color::reset;
+                std::cout << Color::yellow << "\n\tРЎРѕР·РґР°РЅРѕ РЅРѕРІРѕРµ СЃРѕС…СЂР°РЅРµРЅРёРµ.\n" << Color::reset;
             }
             wait_continue();
         }
         else if (choice == "3") {
             std::cout << Color::yellow
-                << "\n\tВнимание: все текущие настройки и статистика\n"
-                << "\tбудут заменены значениями по умолчанию!\n"
-                << "\tПродолжить? (y/n) >> " << Color::reset;
+                << "\n\tР’РЅРёРјР°РЅРёРµ: РІСЃРµ С‚РµРєСѓС‰РёРµ РЅР°СЃС‚СЂРѕР№РєРё Рё СЃС‚Р°С‚РёСЃС‚РёРєР°\n"
+                << "\tР±СѓРґСѓС‚ Р·Р°РјРµРЅРµРЅС‹ Р·РЅР°С‡РµРЅРёСЏРјРё РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ!\n"
+                << "\tРџСЂРѕРґРѕР»Р¶РёС‚СЊ? (y/n) >> " << Color::reset;
             std::string confirm;
             std::getline(std::cin, confirm);
             if (confirm == "y" || confirm == "Y") {
                 create_default_save();
-                // Перезагружаем состояние из нового файла
+                // РџРµСЂРµР·Р°РіСЂСѓР¶Р°РµРј СЃРѕСЃС‚РѕСЏРЅРёРµ РёР· РЅРѕРІРѕРіРѕ С„Р°Р№Р»Р°
                 load_game(state);
-                std::cout << Color::green << "\n\tСохранение сброшено к значениям по умолчанию.\n" << Color::reset;
+                std::cout << Color::green << "\n\tРЎРѕС…СЂР°РЅРµРЅРёРµ СЃР±СЂРѕС€РµРЅРѕ Рє Р·РЅР°С‡РµРЅРёСЏРј РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ.\n" << Color::reset;
             }
             else {
-                std::cout << Color::yellow << "\n\tОтмена операции.\n" << Color::reset;
+                std::cout << Color::yellow << "\n\tРћС‚РјРµРЅР° РѕРїРµСЂР°С†РёРё.\n" << Color::reset;
             }
             wait_continue();
         }
@@ -345,7 +345,7 @@ void show_saves_menu(GameState& state) {
             in_saves = false;
         }
         else {
-            std::cout << Color::red << "\n\tНеизвестная команда. Попробуйте снова.\n" << Color::reset;
+            std::cout << Color::red << "\n\tРќРµРёР·РІРµСЃС‚РЅР°СЏ РєРѕРјР°РЅРґР°. РџРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°.\n" << Color::reset;
             wait_continue();
         }
     }

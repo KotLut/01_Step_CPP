@@ -1,9 +1,9 @@
-#pragma once
+п»ї#pragma once
 
 #include <string>
 #include "game_core.h"
 
-// ANSI-цвета для консольного интерфейса
+// ANSI-С†РІРµС‚Р° РґР»СЏ РєРѕРЅСЃРѕР»СЊРЅРѕРіРѕ РёРЅС‚РµСЂС„РµР№СЃР°
 namespace Color {
 	inline const char* reset =  "\033[0m";
 	inline const char* red =    "\033[31m";
@@ -12,25 +12,26 @@ namespace Color {
     inline const char* blue =   "\033[34m";
     inline const char* cyan =   "\033[36m";
 	inline const char* white =  "\033[37m";
+    inline const char* brown = "\033[38;5;94m";
 }
 
-// Индексы достижений (строки 8–22)
+// РРЅРґРµРєСЃС‹ РґРѕСЃС‚РёР¶РµРЅРёР№ (СЃС‚СЂРѕРєРё 8вЂ“22)
 enum AchievementIndex {
-    CUSTOMIZE_SETTINGS = 0,      // (1) Изменение настроек
-    SAW_ALPHA_LOGO,              // (2) Альфа-логотип
-    SAW_BIG_LOGO,                // (3) Большая заставка
-    TOGGLED_AUTO_CLEAR,          // (4) Отключил очистку
-    REVISITED_CLEAR_SETTING,     // (5) Вернул очистку
-    VIEWED_CREDITS,              // (6) Прочитал "От автора"
-    ENTERED_SAVES_MENU,          // (7) Заходил в сохранения
-    FOUND_MICRO_EASTER_EGG,      // (8) Микро-пасхалка
-    TRIGGERED_LOGO_10,           // (9) Ввёл "10" в меню
-    OPENED_LOGO_LINK,            // (10) Открыл ссылку логотипа
-    SAW_ALT_LOGO,                // (11) Альтернативный логотип
-    FIXED_HELLO_WORLD,           // (12) Исправил hello_world (КОДЕР)
+    CUSTOMIZE_SETTINGS = 0,      // (1) РР·РјРµРЅРµРЅРёРµ РЅР°СЃС‚СЂРѕРµРє
+    SAW_ALPHA_LOGO,              // (2) РђР»СЊС„Р°-Р»РѕРіРѕС‚РёРї
+    SAW_BIG_LOGO,                // (3) Р‘РѕР»СЊС€Р°СЏ Р·Р°СЃС‚Р°РІРєР°
+    TOGGLED_AUTO_CLEAR,          // (4) РћС‚РєР»СЋС‡РёР» РѕС‡РёСЃС‚РєСѓ
+    REVISITED_CLEAR_SETTING,     // (5) Р’РµСЂРЅСѓР» РѕС‡РёСЃС‚РєСѓ
+    VIEWED_CREDITS,              // (6) РџСЂРѕС‡РёС‚Р°Р» "РћС‚ Р°РІС‚РѕСЂР°"
+    ENTERED_SAVES_MENU,          // (7) Р—Р°С…РѕРґРёР» РІ СЃРѕС…СЂР°РЅРµРЅРёСЏ
+    FOUND_MICRO_EASTER_EGG,      // (8) РњРёРєСЂРѕ-РїР°СЃС…Р°Р»РєР°
+    TRIGGERED_LOGO_10,           // (9) Р’РІС‘Р» "10" РІ РјРµРЅСЋ
+    OPENED_LOGO_LINK,            // (10) РћС‚РєСЂС‹Р» СЃСЃС‹Р»РєСѓ Р»РѕРіРѕС‚РёРїР°
+    SAW_ALT_LOGO,                // (11) РђР»СЊС‚РµСЂРЅР°С‚РёРІРЅС‹Р№ Р»РѕРіРѕС‚РёРї
+    FIXED_HELLO_WORLD,           // (12) РСЃРїСЂР°РІРёР» hello_world (РљРћР”Р•Р )
 };
 
-// Меню и экраны
+// РњРµРЅСЋ Рё СЌРєСЂР°РЅС‹
 void show_settings_menu(GameState& state);
 void show_help(GameState& state);
 void show_stats(const GameState& state);

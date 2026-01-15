@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <random>
 #include <thread>
 #include <chrono>
@@ -9,39 +9,39 @@
 void run_classic_game(GameState& state) {
     clear_screen(state.auto_clear);
     std::cout << Color::white
-        << "\n---/===/    ÊËÀÑÑÈ×ÅÑÊÀß ÈÃĞÀ    \\===\\---\n";
+        << "\n---/===/    ĞšĞ›ĞĞ¡Ğ¡Ğ˜Ğ§Ğ•Ğ¡ĞšĞĞ¯ Ğ˜Ğ“Ğ Ğ    \\===\\---\n";
 
-    std::cout << "\tÊîëè÷åñòâî óğîâíåé: " << state.level_count << "\n";
-    std::cout << Color::yellow << "\n\t\tÏÎÅÕÀËÈ!\n" << Color::reset;
+    std::cout << "\tĞšĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ ÑƒÑ€Ğ¾Ğ²Ğ½ĞµĞ¹: " << state.level_count << "\n";
+    std::cout << Color::yellow << "\n\t\tĞŸĞĞ•Ğ¥ĞĞ›Ğ˜!\n" << Color::reset;
 
     int correct_answers = 0;
     int incorrect_answers = 0;
 
-    // Ãåíåğàòîğ ñëó÷àéíûõ ÷èñåë (0 èëè 1)
+    // Ğ“ĞµĞ½ĞµÑ€Ğ°Ñ‚Ğ¾Ñ€ ÑĞ»ÑƒÑ‡Ğ°Ğ¹Ğ½Ñ‹Ñ… Ñ‡Ğ¸ÑĞµĞ» (0 Ğ¸Ğ»Ğ¸ 1)
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> dis(0, 1);
 
     for (int level = 1; level <= state.level_count; ++level) {
         std::cout << Color::white
-            << "\n\t-=/ ÓĞÎÂÅÍÜ " << level << " \\=-\t\n";
+            << "\n\t-=/ Ğ£Ğ ĞĞ’Ğ•ĞĞ¬ " << level << " \\=-\t\n";
 
-        std::cout << Color::yellow << "\tÂàøå ÷èñëî (0 èëè 1) >> " << Color::reset;
+        std::cout << Color::yellow << "\tĞ’Ğ°ÑˆĞµ Ñ‡Ğ¸ÑĞ»Ğ¾ (0 Ğ¸Ğ»Ğ¸ 1) >> " << Color::reset;
         bool player_choice = get_valid_binary_choice();
 
         int random_value = dis(gen);
-        std::cout << "\tĞàíäîì = \t" << random_value << "\n";
+        std::cout << "\tĞ Ğ°Ğ½Ğ´Ğ¾Ğ¼ = \t" << random_value << "\n";
 
         if ((player_choice && random_value == 1) || (!player_choice && random_value == 0)) {
-            std::cout << "\tÂÅĞÍÎ!\t\t" << Color::green << "+" << Color::reset << "  \n";
+            std::cout << "\tĞ’Ğ•Ğ ĞĞ!\t\t" << Color::green << "+" << Color::reset << "  \n";
             ++correct_answers;
         }
         else {
-            std::cout << "\tÍÅÂÅĞÍÎ.\t" << Color::red << "-" << Color::reset << "  \n";
+            std::cout << "\tĞĞ•Ğ’Ğ•Ğ ĞĞ.\t" << Color::red << "-" << Color::reset << "  \n";
             ++incorrect_answers;
         }
 
-        std::cout << "\t-=\\ ÓĞÎÂÅÍÜ " << level << " /=-\t\n";
+        std::cout << "\t-=\\ Ğ£Ğ ĞĞ’Ğ•ĞĞ¬ " << level << " /=-\t\n";
 
         wait_continue();
     }
@@ -54,33 +54,33 @@ void run_all_or_nothing(GameState& state) {
     clear_screen(state.auto_clear);
 
     std::cout << Color::white
-        << "\n---/===/  ĞÅÆÈÌ ÈÃĞÛ: \""<<Color::cyan<<"ÂÑ¨ ÈËÈ ÍÈ×ÅÃÎ" << Color::reset << "\"  \\===\\---\n"
-        << "\n\tÊîëè÷åñòâî óğîâíåé\n";
+        << "\n---/===/  Ğ Ğ•Ğ–Ğ˜Ğœ Ğ˜Ğ“Ğ Ğ«: \""<<Color::cyan<<"Ğ’Ğ¡Ğ Ğ˜Ğ›Ğ˜ ĞĞ˜Ğ§Ğ•Ğ“Ğ" << Color::reset << "\"  \\===\\---\n"
+        << "\n\tĞšĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ ÑƒÑ€Ğ¾Ğ²Ğ½ĞµĞ¹\n";
 
     if (state.level_count == 10) {
-        std::cout << "\t(óñòàíîâëåíî ïî óìîë÷àíèş): " << state.level_count << "\n";
+        std::cout << "\t(ÑƒÑÑ‚Ğ°Ğ½Ğ¾Ğ²Ğ»ĞµĞ½Ğ¾ Ğ¿Ğ¾ ÑƒĞ¼Ğ¾Ğ»Ñ‡Ğ°Ğ½Ğ¸Ñ): " << state.level_count << "\n";
     }
     else {
-        std::cout << "\tâ ñîîòâåòñòâèè ñ ïîëüçîâàòåëüñêîé íàñòğîéêîé: " << state.level_count << "\n";
+        std::cout << "\tĞ² ÑĞ¾Ğ¾Ñ‚Ğ²ĞµÑ‚ÑÑ‚Ğ²Ğ¸Ğ¸ Ñ Ğ¿Ğ¾Ğ»ÑŒĞ·Ğ¾Ğ²Ğ°Ñ‚ĞµĞ»ÑŒÑĞºĞ¾Ğ¹ Ğ½Ğ°ÑÑ‚Ñ€Ğ¾Ğ¹ĞºĞ¾Ğ¹: " << state.level_count << "\n";
     }
 
-    std::cout << Color::yellow << "\n\t\tÏÎÅÕÀËÈ!\n" << Color::reset;
+    std::cout << Color::yellow << "\n\t\tĞŸĞĞ•Ğ¥ĞĞ›Ğ˜!\n" << Color::reset;
 
-    // === ÎÄÈÍ ÂÂÎÄ ×ÈÑËÀ ÍÀ ÂÑÅ ÓĞÎÂÍÈ ===
-    std::cout << "\n Âàøå ÷èñëî >> ";
+    // === ĞĞ”Ğ˜Ğ Ğ’Ğ’ĞĞ” Ğ§Ğ˜Ğ¡Ğ›Ğ ĞĞ Ğ’Ğ¡Ğ• Ğ£Ğ ĞĞ’ĞĞ˜ ===
+    std::cout << "\n Ğ’Ğ°ÑˆĞµ Ñ‡Ğ¸ÑĞ»Ğ¾ >> ";
     bool player_choice = get_valid_binary_choice();
     int player_num = player_choice ? 1 : 0;
 
     int correct = 0;
     int incorrect = 0;
 
-    // === Ãåíåğàòîğ ñëó÷àéíûõ ÷èñåë ===
+    // === Ğ“ĞµĞ½ĞµÑ€Ğ°Ñ‚Ğ¾Ñ€ ÑĞ»ÑƒÑ‡Ğ°Ğ¹Ğ½Ñ‹Ñ… Ñ‡Ğ¸ÑĞµĞ» ===
     std::random_device rd;
     std::mt19937 gen(rd());
 
-    // === Âåğõíÿÿ ğàìêà ===
+    // === Ğ’ĞµÑ€Ñ…Ğ½ÑÑ Ñ€Ğ°Ğ¼ĞºĞ° ===
     std::cout << "\n==================================================\n";
-    std::cout << "||\t |¹ Óğ.\t| Âàø.×.| Ñë.×.\t| +/-  |       ||\n";
+    std::cout << "||\t |â„– Ğ£Ñ€.\t| Ğ’Ğ°Ñˆ.Ğ§.| Ğ¡Ğ».Ğ§.\t| +/-  |       ||\n";
 
     for (int level = 1; level <= state.level_count; ++level) {
         std::uniform_int_distribution<> dis(0, 1);
@@ -111,7 +111,7 @@ void run_all_or_nothing(GameState& state) {
 
     std::this_thread::sleep_for(std::chrono::milliseconds(400));
 
-    // === Èòîãè ===
+    // === Ğ˜Ñ‚Ğ¾Ğ³Ğ¸ ===
     show_game_results(state, correct, incorrect);
 }
 
@@ -120,11 +120,11 @@ void run_lives_game(GameState& state) {
     clear_screen(state.auto_clear);
 
     std::cout << Color::white
-        << "\n---/===/  ĞÅÆÈÌ ÈÃĞÛ: \"" << Color::red << "ÆÈÇÍÈ" << Color::reset << "\"  \\===\\---\n"
-        << "\n\tÍà÷àëüíîå çäîğîâüå: " << state.health << "\n"
-        << "\tÌàêñ. êîëè÷åñòâî óğîâíåé: " << state.level_count << "\n";
+        << "\n---/===/  Ğ Ğ•Ğ–Ğ˜Ğœ Ğ˜Ğ“Ğ Ğ«: \"" << Color::red << "Ğ–Ğ˜Ğ—ĞĞ˜" << Color::reset << "\"  \\===\\---\n"
+        << "\n\tĞĞ°Ñ‡Ğ°Ğ»ÑŒĞ½Ğ¾Ğµ Ğ·Ğ´Ğ¾Ñ€Ğ¾Ğ²ÑŒĞµ: " << state.health << "\n"
+        << "\tĞœĞ°ĞºÑ. ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ ÑƒÑ€Ğ¾Ğ²Ğ½ĞµĞ¹: " << state.level_count << "\n";
 
-    std::cout << Color::yellow << "\n\t\tÏÎÅÕÀËÈ!\n" << Color::reset;
+    std::cout << Color::yellow << "\n\t\tĞŸĞĞ•Ğ¥ĞĞ›Ğ˜!\n" << Color::reset;
 
     int current_health = state.health;
     int correct = 0;
@@ -137,40 +137,40 @@ void run_lives_game(GameState& state) {
     while (current_health > 0 && level < state.level_count) {
         ++level;
         std::cout << Color::white
-            << "\n\t-=/ ÓĞÎÂÅÍÜ " << level << " \\=-\t\n"
-            << "\tÇäîğîâüå: " << Color::red << current_health << Color::reset << "\n";
+            << "\n\t-=/ Ğ£Ğ ĞĞ’Ğ•ĞĞ¬ " << level << " \\=-\t\n"
+            << "\tĞ—Ğ´Ğ¾Ñ€Ğ¾Ğ²ÑŒĞµ: " << Color::red << current_health << Color::reset << "\n";
 
-        std::cout << Color::yellow << "\tÂàøå ÷èñëî (0 èëè 1) >> " << Color::reset;
+        std::cout << Color::yellow << "\tĞ’Ğ°ÑˆĞµ Ñ‡Ğ¸ÑĞ»Ğ¾ (0 Ğ¸Ğ»Ğ¸ 1) >> " << Color::reset;
         bool player_choice = get_valid_binary_choice();
         int player_num = player_choice ? 1 : 0;
 
         std::uniform_int_distribution<> dis(0, 1);
         int random_val = dis(gen);
 
-        std::cout << "\tÑëó÷àéíîå ÷èñëî = " << random_val << "\n";
+        std::cout << "\tĞ¡Ğ»ÑƒÑ‡Ğ°Ğ¹Ğ½Ğ¾Ğµ Ñ‡Ğ¸ÑĞ»Ğ¾ = " << random_val << "\n";
 
         if (player_num == random_val) {
-            std::cout << Color::green << "\tÂÅĞÍÎ! Çäîğîâüå ñîõğàíåíî.\n" << Color::reset;
+            std::cout << Color::green << "\tĞ’Ğ•Ğ ĞĞ! Ğ—Ğ´Ğ¾Ñ€Ğ¾Ğ²ÑŒĞµ ÑĞ¾Ñ…Ñ€Ğ°Ğ½ĞµĞ½Ğ¾.\n" << Color::reset;
             ++correct;
         }
         else {
-            std::cout << Color::red << "\tÍÅÂÅĞÍÎ! Çäîğîâüå -1.\n" << Color::reset;
+            std::cout << Color::red << "\tĞĞ•Ğ’Ğ•Ğ ĞĞ! Ğ—Ğ´Ğ¾Ñ€Ğ¾Ğ²ÑŒĞµ -1.\n" << Color::reset;
             --current_health;
             ++incorrect;
         }
 
-        std::cout << "\t-=\\ ÓĞÎÂÅÍÜ " << level << " /=-\t\n";
+        std::cout << "\t-=\\ Ğ£Ğ ĞĞ’Ğ•ĞĞ¬ " << level << " /=-\t\n";
 
         wait_continue();
     }
 
-    // === Èòîãè ïî "æèçíÿì"===
-    std::cout << Color::white << "\n---/===/    ÈÒÎÃÈ ÈÃĞÛ    \\===\\---\n";
+    // === Ğ˜Ñ‚Ğ¾Ğ³Ğ¸ Ğ¿Ğ¾ "Ğ¶Ğ¸Ğ·Ğ½ÑĞ¼"===
+    std::cout << Color::white << "\n---/===/    Ğ˜Ğ¢ĞĞ“Ğ˜ Ğ˜Ğ“Ğ Ğ«    \\===\\---\n";
     if (current_health == 0) {
-        std::cout << "\tÈãğà îêîí÷åíà: " << Color::red << "çäîğîâüå" << Color::reset << " èñ÷åğïàíî!\n";
+        std::cout << "\tĞ˜Ğ³Ñ€Ğ° Ğ¾ĞºĞ¾Ğ½Ñ‡ĞµĞ½Ğ°: " << Color::red << "Ğ·Ğ´Ğ¾Ñ€Ğ¾Ğ²ÑŒĞµ" << Color::reset << " Ğ¸ÑÑ‡ĞµÑ€Ğ¿Ğ°Ğ½Ğ¾!\n";
     }
     else {
-        std::cout << "\tÄîñòèãíóò ëèìèò óğîâíåé.\n";
+        std::cout << "\tĞ”Ğ¾ÑÑ‚Ğ¸Ğ³Ğ½ÑƒÑ‚ Ğ»Ğ¸Ğ¼Ğ¸Ñ‚ ÑƒÑ€Ğ¾Ğ²Ğ½ĞµĞ¹.\n";
     }
 
     show_game_results(state, correct, incorrect);
@@ -184,27 +184,27 @@ void run_hints_game(GameState& state) {
     constexpr int DEFAULT_HINT_FREQ = 4;
 
     std::cout << Color::white
-        << "\n---/===/\tĞÅÆÈÌ ÈÃĞÛ \"" << Color::yellow << "Ñ ÏÎÄÑÊÀÇÊÀÌÈ" << Color::reset << "\"\t\\===\\---\n";
+        << "\n---/===/\tĞ Ğ•Ğ–Ğ˜Ğœ Ğ˜Ğ“Ğ Ğ« \"" << Color::yellow << "Ğ¡ ĞŸĞĞ”Ğ¡ĞšĞĞ—ĞšĞĞœĞ˜" << Color::reset << "\"\t\\===\\---\n";
 
 
-    std::cout << "\n\tÏîäñêàçêè áóäóò ïîÿâëÿòüñÿ ğàç â ";
+    std::cout << "\n\tĞŸĞ¾Ğ´ÑĞºĞ°Ğ·ĞºĞ¸ Ğ±ÑƒĞ´ÑƒÑ‚ Ğ¿Ğ¾ÑĞ²Ğ»ÑÑ‚ÑŒÑÑ Ñ€Ğ°Ğ· Ğ² ";
     if (state.hint_frequency == DEFAULT_HINT_FREQ) {
-        std::cout << "\n\t(óñòàíîâëåíî ïî óìîë÷àíèş): " << state.hint_frequency << " óğ.\n";
+        std::cout << "\n\t(ÑƒÑÑ‚Ğ°Ğ½Ğ¾Ğ²Ğ»ĞµĞ½Ğ¾ Ğ¿Ğ¾ ÑƒĞ¼Ğ¾Ğ»Ñ‡Ğ°Ğ½Ğ¸Ñ): " << state.hint_frequency << " ÑƒÑ€.\n";
     }
     else {
-        std::cout << "\n\t(â ñîîòâåòñòâèè ñ ïîëüçîâàòåëüñêîé íàñòğîéêîé): " << state.hint_frequency << " óğ.\n";
+        std::cout << "\n\t(Ğ² ÑĞ¾Ğ¾Ñ‚Ğ²ĞµÑ‚ÑÑ‚Ğ²Ğ¸Ğ¸ Ñ Ğ¿Ğ¾Ğ»ÑŒĞ·Ğ¾Ğ²Ğ°Ñ‚ĞµĞ»ÑŒÑĞºĞ¾Ğ¹ Ğ½Ğ°ÑÑ‚Ñ€Ğ¾Ğ¹ĞºĞ¾Ğ¹): " << state.hint_frequency << " ÑƒÑ€.\n";
     }
 
 
-    std::cout << "\n\tÊîëè÷åñòâî óğîâíåé\n";
+    std::cout << "\n\tĞšĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ ÑƒÑ€Ğ¾Ğ²Ğ½ĞµĞ¹\n";
     if (state.level_count == DEFAULT_LEVELS) {
-        std::cout << "\t(óñòàíîâëåíî ïî óìîë÷àíèş): " << state.level_count << "\n";
+        std::cout << "\t(ÑƒÑÑ‚Ğ°Ğ½Ğ¾Ğ²Ğ»ĞµĞ½Ğ¾ Ğ¿Ğ¾ ÑƒĞ¼Ğ¾Ğ»Ñ‡Ğ°Ğ½Ğ¸Ñ): " << state.level_count << "\n";
     }
     else {
-        std::cout << "\t(â ñîîòâåòñòâèè ñ ïîëüçîâàòåëüñêîé íàñòğîéêîé): " << state.level_count << "\n";
+        std::cout << "\t(Ğ² ÑĞ¾Ğ¾Ñ‚Ğ²ĞµÑ‚ÑÑ‚Ğ²Ğ¸Ğ¸ Ñ Ğ¿Ğ¾Ğ»ÑŒĞ·Ğ¾Ğ²Ğ°Ñ‚ĞµĞ»ÑŒÑĞºĞ¾Ğ¹ Ğ½Ğ°ÑÑ‚Ñ€Ğ¾Ğ¹ĞºĞ¾Ğ¹): " << state.level_count << "\n";
     }
 
-    std::cout << Color::yellow << "\n\t\tÏÎÅÕÀËÈ!\n" << Color::reset;
+    std::cout << Color::yellow << "\n\t\tĞŸĞĞ•Ğ¥ĞĞ›Ğ˜!\n" << Color::reset;
 
     int correct = 0;
     int incorrect = 0;
@@ -220,33 +220,33 @@ void run_hints_game(GameState& state) {
         clear_screen(state.auto_clear);
 
         std::cout << Color::white
-            << "\n\t---/===/    ÓĞÎÂÅÍÜ " << level << "    \\===\\---\n";
+            << "\n\t---/===/    Ğ£Ğ ĞĞ’Ğ•ĞĞ¬ " << level << "    \\===\\---\n";
 
         bool is_hint_level = (level % state.hint_frequency == 0);
 
-        // Ñàìà ïîäñêàçêà
+        // Ğ¡Ğ°Ğ¼Ğ° Ğ¿Ğ¾Ğ´ÑĞºĞ°Ğ·ĞºĞ°
         if (is_hint_level) {
-            std::cout << "\t" << Color::yellow << "ĞÀÍÄÎÌ = \t" << random_val << Color::reset << "\n";
-            std::cout << Color::yellow << "\tÂàøå ÷èñëî !! >> " << Color::reset;
+            std::cout << "\t" << Color::yellow << "Ğ ĞĞĞ”ĞĞœ = \t" << random_val << Color::reset << "\n";
+            std::cout << Color::yellow << "\tĞ’Ğ°ÑˆĞµ Ñ‡Ğ¸ÑĞ»Ğ¾ !! >> " << Color::reset;
         }
         else {
-            std::cout << Color::yellow << "\tÂàøå ÷èñëî >> " << Color::reset;
+            std::cout << Color::yellow << "\tĞ’Ğ°ÑˆĞµ Ñ‡Ğ¸ÑĞ»Ğ¾ >> " << Color::reset;
         }
 
         bool player_choice = get_valid_binary_choice();
         int player_num = player_choice ? 1 : 0;
 
-        // Åñëè ÍÅ ïîäñêàçêà
+        // Ğ•ÑĞ»Ğ¸ ĞĞ• Ğ¿Ğ¾Ğ´ÑĞºĞ°Ğ·ĞºĞ°
         if (!is_hint_level) {
-            std::cout << "\tĞàíäîì = " << random_val << "\n";
+            std::cout << "\tĞ Ğ°Ğ½Ğ´Ğ¾Ğ¼ = " << random_val << "\n";
         }
 
         if (player_num == random_val) {
-            std::cout << Color::green << "\tÂÅĞÍÎ! +\n" << Color::reset;
+            std::cout << Color::green << "\tĞ’Ğ•Ğ ĞĞ! +\n" << Color::reset;
             ++correct;
         }
         else {
-            std::cout << Color::red << "\tÍÅÂÅĞÍÎ. -\n" << Color::reset;
+            std::cout << Color::red << "\tĞĞ•Ğ’Ğ•Ğ ĞĞ. -\n" << Color::reset;
             ++incorrect;
         }
 
@@ -259,21 +259,21 @@ void run_hints_game(GameState& state) {
 
 
 void show_game_results(GameState& state, int correct, int incorrect) {
-    std::cout << Color::white << "\n\t---===/ ÈÒÎÃÈ ÈÃĞÛ \\===---\n";
-    std::cout << "\n\t    " << Color::green << "ÂÅĞÍÛÕ ÎÒÂÅÒÎÂ: " << correct;
-    std::cout << "\n\t  " << Color::red << "ÍÅÂÅĞÍÛÕ ÎÒÂÅÒÎÂ: " << incorrect;
-    std::cout << "\n\n\t  " << Color::reset << "ÏÎÒÎÌÓ --> ";
+    std::cout << Color::white << "\n\t---===/ Ğ˜Ğ¢ĞĞ“Ğ˜ Ğ˜Ğ“Ğ Ğ« \\===---\n";
+    std::cout << "\n\t    " << Color::green << "Ğ’Ğ•Ğ ĞĞ«Ğ¥ ĞĞ¢Ğ’Ğ•Ğ¢ĞĞ’: " << correct;
+    std::cout << "\n\t  " << Color::red << "ĞĞ•Ğ’Ğ•Ğ ĞĞ«Ğ¥ ĞĞ¢Ğ’Ğ•Ğ¢ĞĞ’: " << incorrect;
+    std::cout << "\n\n\t  " << Color::reset << "ĞŸĞĞ¢ĞĞœĞ£ --> ";
 
     if (correct == incorrect) {
-        std::cout << Color::yellow << "ÍÈ×Üß\t:|\n" << Color::reset;
+        std::cout << Color::yellow << "ĞĞ˜Ğ§Ğ¬Ğ¯\t:|\n" << Color::reset;
         state.draw_count += 1;
     }
     else if (correct > incorrect) {
-        std::cout << Color::green << "ÏÎÁÅÄÀ!\t:)\n" << Color::reset;
+        std::cout << Color::green << "ĞŸĞĞ‘Ğ•Ğ”Ğ!\t:)\n" << Color::reset;
         state.win_count += 1;
     }
     else {
-        std::cout << Color::red << "ÏÎĞÀÆÅÍÈÅ\t:(\n" << Color::reset;
+        std::cout << Color::red << "ĞŸĞĞ ĞĞ–Ğ•ĞĞ˜Ğ•\t:(\n" << Color::reset;
         state.loss_count += 1;
     }
 
