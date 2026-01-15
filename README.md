@@ -32,9 +32,9 @@
 ### 🏆 Система прогресса
 - **Статистика**: победы, ничьи, поражения, количество запусков
 - **15 достижений**, разделённых на категории:
-  - **Обычные** — за игру и победы
-  - **Нестандартные** — за взаимодействие с настройками
-  - **Редкие** — за пасхалки и секреты
+  - **Обычные**
+  - **Нестандартные**
+  - **Редкие**
 
 ### 🎁 Секреты и пасхалки
 - Ввод `"10"` в главном меню → логотип автора + ссылка на игру
@@ -126,9 +126,9 @@
 ### 🏆 Progress system
 - **Statistics**: wins, draws, losses, number of runs
 - **15 achievements**, divided into categories:
-  - **Ordinary** — for playing and winning
-- **Non—standard** - for interacting with settings
-— **Rare** - for Easter eggs and secrets
+  - **Ordinary**
+- **Non—standard**
+— **Rare**
 
 ### 🎁 Secrets and Easter eggs
 - Enter `"10"` in the main menu → author's logo + link to the game
