@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <string>
 #include <thread>
 #include <chrono>
@@ -43,7 +43,7 @@ void show_logo(const std::string& name) {
         std::cout << Color::green << art << Color::reset;
     }
     else {
-        std::cout << Color::red << "\t[Íåèçâåñòíûé ëîãîòèï: " << name << "]\n" << Color::reset;
+        std::cout << Color::red << "\t[ÐÐµÐ¸Ð·Ð²ÐµÑÑ‚Ð½Ñ‹Ð¹ Ð»Ð¾Ð³Ð¾Ñ‚Ð¸Ð¿: " << name << "]\n" << Color::reset;
         return;
     }
 }
@@ -52,10 +52,10 @@ void show_logo_author(GameState& state) {
     clear_screen(state.auto_clear);
 
     std::cout << Color::white
-        << "\n\n\tÏîæàëóéñòà, îòêðîé îêíî Èãðû íà âåñü ýêðàí,"
-        << "\n\tòàê òû óâèäèøü òî, ÷òî íóæíî ;)"
+        << "\n\n\tÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð¾Ñ‚ÐºÑ€Ð¾Ð¹ Ð¾ÐºÐ½Ð¾ Ð˜Ð³Ñ€Ñ‹ Ð½Ð° Ð²ÐµÑÑŒ ÑÐºÑ€Ð°Ð½,"
+        << "\n\tÑ‚Ð°Ðº Ñ‚Ñ‹ ÑƒÐ²Ð¸Ð´Ð¸ÑˆÑŒ Ñ‚Ð¾, Ñ‡Ñ‚Ð¾ Ð½ÑƒÐ¶Ð½Ð¾ ;)"
         << Color::yellow
-        << "\n\n\tÂâåäè ÷òî-íèáóäü, êàê áóäåøü ãîòîâ >> " << Color::reset;
+        << "\n\n\tÐ’Ð²ÐµÐ´Ð¸ Ñ‡Ñ‚Ð¾-Ð½Ð¸Ð±ÑƒÐ´ÑŒ, ÐºÐ°Ðº Ð±ÑƒÐ´ÐµÑˆÑŒ Ð³Ð¾Ñ‚Ð¾Ð² >> " << Color::reset;
 
     std::string dummy;
     std::getline(std::cin, dummy);
@@ -63,28 +63,28 @@ void show_logo_author(GameState& state) {
     clear_screen(state.auto_clear);
     show_logo("author1");
 
-    // Äîñòèæåíèå: óâèäåë ëîãîòèï
+    // Ð”Ð¾ÑÑ‚Ð¸Ð¶ÐµÐ½Ð¸Ðµ: ÑƒÐ²Ð¸Ð´ÐµÐ» Ð»Ð¾Ð³Ð¾Ñ‚Ð¸Ð¿
     if (state.achievements.size() > 1) {
         state.achievements[1] = true;
     }
 
     std::cout << Color::white
-        << "\n\tÅñëè õî÷åøü óâèäåòü åù¸ ãðàôèêó ïî\n"
-        << "\t0/1 Step, òî ââåäè \"10\" íèæå :)\n"
-        << "\t(Ïîòðåáóåòñÿ ïîäêëþ÷åíèå ê Ñåòè)\n";
+        << "\n\tÐ•ÑÐ»Ð¸ Ñ…Ð¾Ñ‡ÐµÑˆÑŒ ÑƒÐ²Ð¸Ð´ÐµÑ‚ÑŒ ÐµÑ‰Ñ‘ Ð³Ñ€Ð°Ñ„Ð¸ÐºÑƒ Ð¿Ð¾\n"
+        << "\t0/1 Step, Ñ‚Ð¾ Ð²Ð²ÐµÐ´Ð¸ \"10\" Ð½Ð¸Ð¶Ðµ :)\n"
+        << "\t(ÐŸÐ¾Ñ‚Ñ€ÐµÐ±ÑƒÐµÑ‚ÑÑ Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ðµ Ðº Ð¡ÐµÑ‚Ð¸)\n";
 
-    // Ïðîâåðêà: óæå îòêðûâàë ññûëêó?
+    // ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ°: ÑƒÐ¶Ðµ Ð¾Ñ‚ÐºÑ€Ñ‹Ð²Ð°Ð» ÑÑÑ‹Ð»ÐºÑƒ?
     bool link_already_opened = (state.achievements.size() > 9 && state.achievements[9]);
     if (link_already_opened) {
-        // Äîñòèæåíèå "ïîâòîðíûé ïðîñìîòð"
+        // Ð”Ð¾ÑÑ‚Ð¸Ð¶ÐµÐ½Ð¸Ðµ "Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€Ð½Ñ‹Ð¹ Ð¿Ñ€Ð¾ÑÐ¼Ð¾Ñ‚Ñ€"
         if (state.achievements.size() > 10) {
             state.achievements[10] = true;
         }
-        std::cout << "\t\t(Ëîãîòèï óæå áûë îòêðûò ðàíåå)\n";
+        std::cout << "\t\t(Ð›Ð¾Ð³Ð¾Ñ‚Ð¸Ð¿ ÑƒÐ¶Ðµ Ð±Ñ‹Ð» Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚ Ñ€Ð°Ð½ÐµÐµ)\n";
         show_logo("author2");
     }
     else {
-        std::cout << "\t\t(Ïîòîì ìîæåøü âûçâàòü ëîãîòèï àâòîðà åù¸ ðàç ;)\n";
+        std::cout << "\t\t(ÐŸÐ¾Ñ‚Ð¾Ð¼ Ð¼Ð¾Ð¶ÐµÑˆÑŒ Ð²Ñ‹Ð·Ð²Ð°Ñ‚ÑŒ Ð»Ð¾Ð³Ð¾Ñ‚Ð¸Ð¿ Ð°Ð²Ñ‚Ð¾Ñ€Ð° ÐµÑ‰Ñ‘ Ñ€Ð°Ð· ;)\n";
     }
 
     std::cout << Color::yellow << "\n\t>> " << Color::reset;
@@ -96,7 +96,7 @@ void show_logo_author(GameState& state) {
         system("start https://raw.githubusercontent.com/KotLut/01_Step_CPP/refs/heads/main/01_Step_alpha-logo.png");
 #endif
 
-        // Îáíîâëÿåì äîñòèæåíèÿ
+        // ÐžÐ±Ð½Ð¾Ð²Ð»ÑÐµÐ¼ Ð´Ð¾ÑÑ‚Ð¸Ð¶ÐµÐ½Ð¸Ñ
         if (state.achievements.size() > 9) {
             state.achievements[9] = true;
         }

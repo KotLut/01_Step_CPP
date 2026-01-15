@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <vector>
 #include <chrono>
 #include <thread>
@@ -12,23 +12,23 @@ void show_event() {
     clear_screen();
 
     std::cout << Color::green
-        << "\n\t---/===/    ПРАЗДНИЧНЫЙ ЭВЕНТ    \\===\\---\n"
+        << "\n\t---/===/    РџР РђР—Р”РќРР§РќР«Р™ Р­Р’Р•РќРў    \\===\\---\n"
         << Color::yellow
-        << "\n\tНажмите Enter, чтобы начать анимацию...\n"
+        << "\n\tРќР°Р¶РјРёС‚Рµ Enter, С‡С‚РѕР±С‹ РЅР°С‡Р°С‚СЊ Р°РЅРёРјР°С†РёСЋ...\n"
         << Color::reset;
     wait_continue();
 
     const int tree_height = 10;
-    // Для каждой строки — вектор позиций шариков
+    // Р”Р»СЏ РєР°Р¶РґРѕР№ СЃС‚СЂРѕРєРё вЂ” РІРµРєС‚РѕСЂ РїРѕР·РёС†РёР№ С€Р°СЂРёРєРѕРІ
     std::vector<std::vector<int>> ball_positions(tree_height);
     std::vector<std::string> ball_colors = { Color::red, Color::green, Color::blue, Color::yellow };
 
-    // Инициализация: сколько шариков на строке
+    // РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ: СЃРєРѕР»СЊРєРѕ С€Р°СЂРёРєРѕРІ РЅР° СЃС‚СЂРѕРєРµ
     for (int row = 1; row < tree_height; ++row) {
         int stars = 2 * row + 1;
-        int count = (row < 5) ? 2 : 3; // короткие — 2, длинные — 3
+        int count = (row < 5) ? 2 : 3; // РєРѕСЂРѕС‚РєРёРµ вЂ” 2, РґР»РёРЅРЅС‹Рµ вЂ” 3
         for (int i = 0; i < count; ++i) {
-            // Равномерно распределяем стартовые позиции
+            // Р Р°РІРЅРѕРјРµСЂРЅРѕ СЂР°СЃРїСЂРµРґРµР»СЏРµРј СЃС‚Р°СЂС‚РѕРІС‹Рµ РїРѕР·РёС†РёРё
             int pos = (stars * i) / count;
             ball_positions[row].push_back(pos);
         }
@@ -40,17 +40,17 @@ void show_event() {
     while (running) {
         clear_screen();
 
-        // Верхушка
+        // Р’РµСЂС…СѓС€РєР°
         std::cout << Color::yellow << "\n\t        \\ /\n";
         std::cout << "\t       --@--\n";
 
-        // Ёлка
+        // РЃР»РєР°
         for (int row = 0; row < tree_height; ++row) {
             int stars = 2 * row + 1;
             int padding = tree_height - row - 1;
             std::cout << "\t" << std::string(padding, ' ');
 
-            // Двигаем шарики (кроме первой строки)
+            // Р”РІРёРіР°РµРј С€Р°СЂРёРєРё (РєСЂРѕРјРµ РїРµСЂРІРѕР№ СЃС‚СЂРѕРєРё)
             if (row > 0) {
                 for (size_t i = 0; i < ball_positions[row].size(); ++i) {
                     ball_positions[row][i]++;
@@ -60,7 +60,7 @@ void show_event() {
                 }
             }
 
-            // Вывод строки
+            // Р’С‹РІРѕРґ СЃС‚СЂРѕРєРё
             for (int col = 0; col < stars; ++col) {
                 bool is_ball = false;
                 std::string ball_color = Color::reset;
@@ -86,13 +86,13 @@ void show_event() {
             std::cout << "\n";
         }
 
-        // Ствол
+        // РЎС‚РІРѕР»
         for (int i = 0; i < 3; ++i) {
             std::cout << "\t" << std::string(tree_height - 2, ' ') << Color::brown << "|||" << Color::reset << "\n";
         }
 
         std::cout << Color::yellow
-            << "\n\tНажмите Enter, чтобы остановить.\n"
+            << "\n\tРќР°Р¶РјРёС‚Рµ Enter, С‡С‚РѕР±С‹ РѕСЃС‚Р°РЅРѕРІРёС‚СЊ.\n"
             << Color::reset;
 
         std::this_thread::sleep_for(std::chrono::milliseconds(50));
@@ -106,6 +106,6 @@ void show_event() {
         }
     }
 
-    std::cout << Color::green << "\n\tЭвент завершён. Спасибо за просмотр!\n" << Color::reset;
+    std::cout << Color::green << "\n\tР­РІРµРЅС‚ Р·Р°РІРµСЂС€С‘РЅ. РЎРїР°СЃРёР±Рѕ Р·Р° РїСЂРѕСЃРјРѕС‚СЂ!\n" << Color::reset;
     wait_continue();
 }

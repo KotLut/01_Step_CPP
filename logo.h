@@ -1,9 +1,9 @@
-#pragma once
+п»ї#pragma once
 
 #include <iostream>
 #include <string>
 
-// Структура с именованными логотипами
+// РЎС‚СЂСѓРєС‚СѓСЂР° СЃ РёРјРµРЅРѕРІР°РЅРЅС‹РјРё Р»РѕРіРѕС‚РёРїР°РјРё
 struct GameLogos {
     static constexpr const char* alpha = R"(
 
@@ -237,7 +237,7 @@ struct GameLogos {
     )";
 };
 
-// Показывает логотип по имени: "base", "alpha", "auhtor1", и т.д.
+// РџРѕРєР°Р·С‹РІР°РµС‚ Р»РѕРіРѕС‚РёРї РїРѕ РёРјРµРЅРё: "base", "alpha", "auhtor1", Рё С‚.Рґ.
 void show_logo(const std::string& name);
 
 void show_logo_author(GameState& state);
