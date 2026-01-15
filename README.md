@@ -79,7 +79,8 @@
 
 #### Требования
 - ОС: **Windows**
-- IDE: **Visual Studio Community 2022** (или новее)
+- Компилятор, поддерживающий **C++17**
+- (Опционально) Любая IDE или редактор кода
 
 #### Инструкция
 1. Склонируйте репозиторий:
@@ -183,7 +184,8 @@ A full-fledged multi-level help with descriptions of all modes, settings, errors
 
 #### Requirements
 - OS: **Windows**
-- IDE: **Visual Studio Community 2022** (or later)
+- A compiler that supports **C++17**
+- (Optional) Any IDE or code editor
 
 #### Instructions
 1. Clone the repository:
