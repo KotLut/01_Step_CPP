@@ -199,4 +199,14 @@ A full-fledged multi-level help with descriptions of all modes, settings, errors
 5. After the build, run the game directly in Visual Studio or from the folder:
 `01-Step\x64\Release\01-Step.exe `
 
- The source code is entirely in Russian and uses UTF-8. All files are saved from the BOM to work correctly in Visual Studio.
+> 💡 The source code is entirely in Russian and uses UTF-8. All files are saved from the BOM to work correctly in Visual Studio.
+
+## 📜 License
+This project is distributed under the [MIT] LICENSE.
+
+## 🤝 How to contribute
+Do you want to help the project? Check out our [contribution guide](CONTRIBUTING.md ).
+
+## 💬 Discussions
+Do you have an idea, a question, or just want to chat?  
+Join the [Discussions](https://github.com/KotLut/01_Step_CPP/discussions )!
