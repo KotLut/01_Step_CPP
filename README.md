@@ -1,7 +1,9 @@
 [![C++](https://img.shields.io/badge/C%2B%2B-17-blue.svg)](https://isocpp.org/)
 [![Platform: Windows](https://img.shields.io/badge/Platform-Windows-0078D7.svg)](https://www.microsoft.com/windows)
-[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
+![Terminal](https://img.shields.io/badge/Interface-Console-333333?logo=terminal&logoColor=white)
+[![Release](https://img.shields.io/github/v/release/KotLut/01_Step_CPP?include_prereleases&color=green)](https://github.com/KotLut/01_Step_CPP/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-777777.svg)](LICENSE)
+[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 # 🎮 0/1 Step — Игра на удачу и интуицию (RU)
 
