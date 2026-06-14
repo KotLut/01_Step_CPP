@@ -5,30 +5,30 @@ It doesn't matter if you've found a typo, come up with a new Easter egg, or just
 
 ## 📥 Ways to participate
 
-You can help without even knowing C++.:
-- **Report an error** (via [Issues](https://github.com/KotLut/01_Step_CPP/issues ))
-- **Suggest an idea** (in Discussions → "[Ideas](https://github.com/KotLut/01_Step_CPP/discussions/categories/ideas )")
+You can help without even knowing C++:
+- **Report an error** (via [Issues](https://github.com/KotLut/01_Step_CPP/issues))
+- **Suggest an idea** (in Discussions → "[Ideas](https://github.com/KotLut/01_Step_CPP/discussions/categories/ideas)")
 - **Improve the README** or help
 - **Translate the game** (if you want a version in another language)
 - **Share the game** with your friends
 
 ## 🐞 Report an error
 
-1. Go to [Issues](https://github.com/KotLut/01_Step_CPP/issues ).
+1. Go to [Issues](https://github.com/KotLut/01_Step_CPP/issues).
 2. Make sure that the error has not been reported yet (use the search).
 3. Click **"New issue"**→ select the template **"Bug Report"** (if available).
 4. Describe:
    "What were you doing?"
    - What was expected?
 - What happened?
-- Game version (for example, `v0.1-beta`)
+- Game version (for example, `v2-beta`)
 - OS (Windows 10/11)
 
 > ⚠️ Do not write bugs in Discussions - only in Issues!
 
-## 💡 Suggest a new feature
+## 💡 Suggest a feature
 
-1. First, discuss the idea in [Discussions → "Ideas"](https://github.com/KotLut/01_Step_CPP/discussions/categories/ideas ).
+1. First, discuss the idea in [Discussions → "Ideas"](https://github.com/KotLut/01_Step_CPP/discussions/categories/ideas).
 2. If the idea gets support, create an Issue with the label **"enhancement"**.
 3. You can immediately send a Pull Request (see below).
 
@@ -40,24 +40,33 @@ Do you want to fix the code or add a feature? Great!
 2. Create a new branch: `git checkout -b feature/cool-idea`
 3. Make changes and commit them.
 4. Make sure that:
-- The code corresponds to the project style (C++, modularity, comments in Russian)
-- All files are in UTF-8 with BOM (as in the main project)
+- The code follows the project's coding style (C++, modularity, comments in Russian)
+- All source files are encoded in UTF-8 (as in the main project)
 - There are no unnecessary files ('.exe`, `.sdf`, `Debug/`, etc.)
 5. Open a Pull Request to the main repository.
 6. Describe what you have changed and why.
 
- Small PR 💡 (one feature / one fix) are created and accepted faster!
+ Small PRs (one feature or one fix) are reviewed and merged faster!
 
 ## 📜 Behavior
 
 Be kind, respectful, and open.  
 The project was created for learning and joy — let's keep this atmosphere alive.
 
+## 📝 Commit messages
+
+Please use clear commit messages.
+
+Examples:
+- fix: correct achievement unlock logic
+- feat: add new game mode
+- docs: update README
+
 ---
 
 Thank you for making 0/1 Step better! 🎮🎄
 
-![game_alpha_logo](https://raw.githubusercontent.com/KotLut/01_Step_CPP/refs/heads/main/01_Step_alpha-logo.png)
+![game_alpha_logo](https://raw.githubusercontent.com/KotLut/01_Step_CPP/main/01_Step_alpha-logo.png)
 
 # 🤝 Как внести свой вклад в 0/1 Step (RU)
 
@@ -82,7 +91,7 @@ Thank you for making 0/1 Step better! 🎮🎄
    - Что вы делали?
    - Что ожидалось?
    - Что произошло?
-   - Версия игры (например, `v0.1-beta`)
+   - Версия игры (например, `v2-beta`)
    - ОС (Windows 10/11)
 
 > ⚠️ Не пишите баги в Discussions — только в Issues!
@@ -102,7 +111,7 @@ Thank you for making 0/1 Step better! 🎮🎄
 3. Сделайте изменения и закоммитьте их.
 4. Убедитесь, что:
    - Код соответствует стилю проекта (C++, модульность, комментарии на русском)
-   - Все файлы в UTF-8 с BOM (как в основном проекте)
+   - Все файлы в UTF-8 (как в основном проекте)
    - Нет лишних файлов (`.exe`, `.sdf`, `Debug/` и т.д.)
 5. Откройте Pull Request в основной репозиторий.
 6. Опишите, что вы изменили и зачем.
@@ -113,6 +122,15 @@ Thank you for making 0/1 Step better! 🎮🎄
 
 Будьте добры, уважительны и открыты.  
 Проект создан для обучения и радости — давайте сохранять эту атмосферу.
+
+## 📝 Сообщения коммитов
+
+Пожалуйста, используйте понятные и информативные сообщения коммитов.
+
+Примеры:
+- fix: исправлена логика получения достижений
+- feat: добавлен новый игровой режим
+- docs: обновлён README
 
 ---
 
