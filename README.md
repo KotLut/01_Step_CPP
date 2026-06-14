@@ -11,12 +11,12 @@
 > Минималистичная, но глубокая текстовая игра с несколькими режимами, настройками, достижениями и пасхалками.  
 > Написана на **C++** с использованием современных практик и без внешних зависимостей.
 
-![game_alpha_logo](https://raw.githubusercontent.com/KotLut/01_Step_CPP/refs/heads/main/01_Step_alpha-logo.png)
+![game_alpha_logo](https://raw.githubusercontent.com/KotLut/01_Step_CPP/main/01_Step_alpha-logo.png)
 
 ---
 
 ## 📦 Версия
-**0.1-beta** — первая публичная бета-версия
+**2-beta** — вторая публичная бета-версия
 
 ---
 
@@ -56,12 +56,39 @@
 ## 🛠 Технические детали
 
 - **Язык**: C++17
-- **Случайность**: `std::mt19937` + `std::random_device` (высокое качество)
+- **Случайность**: `std::mt19937` + `std::random_device`
 - **Цвета**: ANSI-коды (`white`, `green`, `yellow`, `red`, `blue`, `cyan`, `brown`)
 - **Безопасность**: валидация ввода, защита от некорректных значений
-- **Архитектура**: модульная, «пельменный код» — каждый файл решает одну задачу
+- **Архитектура**: модульная, каждый файл отвечает за отдельную подсистему
 - **Поддержка UTF-8** в консоли Windows
 
+
+---
+
+## 🏗 Архитектура и ООП
+
+Проект реализован с соблюдением принципов объектно-ориентированного программирования:
+
+### 📦 Собственные структуры данных
+- **`CustomBoolArray`** — динамический массив `bool`, реализованный вручную (вместо `std::vector<bool>`).
+  - Управление памятью инкапсулировано в классе (конструктор/деструктор)
+  - Инкапсуляция: приватный указатель `bool* data_`, публичные методы `get()`, `set()`
+  - Запрет копирования через `= delete` для предотвращения утечек
+  - Соответствует требованию задания: *"Реализация структур данных — собственная!"*
+
+### 🧱 Модульная структура
+| Файл | Ответственность |
+|------|----------------|
+| `main.cpp` | Точка входа в приложение |
+| `Engine.h/.cpp` | Класс `GameSession`: состояние игры, сохранения, достижения |
+| `UI.h/.cpp` | Консольный интерфейс, меню, подразделы меню |
+| `GameMode.h/.cpp` | Базовый класс режимов + 4 режима (Классика, Всё/Ничего, Жизни, Подсказки) |
+| `logos.h` | заставки и логотипы |
+
+### ⚠ Обработка исключений
+- Класс-исключение `GameExitRequested` для корректного прерывания игры
+- Валидация ввода через `InputValidator::getInt()` с повторным запросом
+- Защита от некорректных файлов сохранения (автосоздание обычного сохранения)
 
 ---
 
@@ -110,18 +137,29 @@
 
 ---
 
+## 🚀 Дорожная карта
+
+- [x] Основной игровой процесс
+- [x] Система сохранения
+- [x] Достижения
+- [ ] Дополнительные игровые режимы
+- [ ] Улучшения локализации
+- [ ] Полная поддержка Linux
+
+---
+
 # 🎮 0/1 Step — A game of luck and intuition (EN)
 
 > **"Guess what the computer chose: 0 or 1?"**  
 > A minimalistic but deep text game with multiple modes, settings, achievements and Easter eggs.  
 > Written in **C++** using modern practices and without external dependencies.
 
-![game_alpha_logo](https://raw.githubusercontent.com/KotLut/01_Step_CPP/refs/heads/main/01_Step_alpha-logo.png)
+![game_alpha_logo](https://raw.githubusercontent.com/KotLut/01_Step_CPP/main/01_Step_alpha-logo.png)
 
 ---
 
 ## 📦 Version
-**0.1-beta** — the first public beta version
+**2-beta** — second public beta version
 
 ---
 
@@ -144,9 +182,9 @@
 ### 🏆 Progress system
 - **Statistics**: wins, draws, losses, number of runs
 - **15 achievements**, divided into categories:
-  - **Ordinary**
-- **Non—standard**
-— **Rare**
+  - **Common**
+  - **Unusual**
+  - **Rare**
 
 ### 🎁 Secrets and Easter eggs
 - Enter `"10"` in the main menu → author's logo + link to the game
@@ -161,12 +199,38 @@ A full-fledged multi-level help with descriptions of all modes, settings, errors
 ## 🛠 Technical Details
 
 - **Language**: C++17
-- **Randomness**: `std::mt19937` + `std::random_device` (high quality)
+- **Randomness**: `std::mt19937` + `std::random_device`
 - **Colors**: ANSI codes (`white`, `green`, `yellow`, `red`, `blue`, `cyan`, `brown`)
 - **Security**: input validation, protection against incorrect values
-- **Architecture**: modular, "dumpling code" — each file solves one task
+- **Architecture**: modular, each file is responsible for a separate subsystem
 - **UTF-8 support** in Windows console
 
+---
+
+# 🏗 Architecture and OOP
+
+The project was implemented in compliance with the principles of object-oriented programming:
+
+### 📦 Proprietary data structures
+- CustomBoolArray is a manually implemented dynamic `bool` array
+- Memory management via `new[]`/`delete[]` (RAII)
+- Encapsulation: private pointer `bool* data_`, public methods `get()`, `set()`
+- Prohibition of copying via `= delete` to prevent leaks
+- Meets the requirement of the assignment: * "The implementation of data structures is proprietary!"*
+
+### 🧱 Modular structure
+| File | Responsibility |
+|------|----------------|
+| `main.cpp` | Application Entry point |
+| `Engine.h/.cpp` | 'GameSession` class: game status, saves, achievements |
+| `UI.h/.cpp` | Console interface, menus, menu subsections |
+| `GameMode.h/.cpp ` | Basic class of modes + 4 modes (Classic, All/Nothing, Life, Hints) |
+| `logos.h` | screensavers and logos |
+
+### ⚠ Exception handling
+-The `GameExitRequested` exception class for correctly interrupting the game
+- Input validation via `InputValidator::getInt()` with a repeat request
+- Protection against incorrect save files (auto-create normal save)
 
 ---
 
@@ -175,7 +239,7 @@ A full-fledged multi-level help with descriptions of all modes, settings, errors
 
 ## Option 1: Download the finished game (recommended)
 
-1. Go to the **[Releases] section(https://github.com/KotLut/01_Step_CPP/releases )**.
+1. Go to the **[Releases](https://github.com/KotLut/01_Step_CPP/releases)**.
 2. Download the file **`01_Step.exe `**
 4. Run the file.
 
@@ -204,11 +268,22 @@ A full-fledged multi-level help with descriptions of all modes, settings, errors
 > 💡 The source code is entirely in Russian and uses UTF-8. All files are saved from the BOM to work correctly in Visual Studio.
 
 ## 📜 License
-This project is distributed under the [MIT] LICENSE.
+This project is distributed under the [MIT](LICENSE).
 
 ## 🤝 How to contribute
-Do you want to help the project? Check out our [contribution guide](CONTRIBUTING.md ).
+Do you want to help the project? Check out our [contribution guide](CONTRIBUTING.md).
 
 ## 💬 Discussions
 Do you have an idea, a question, or just want to chat?  
-Join the [Discussions](https://github.com/KotLut/01_Step_CPP/discussions )!
+Join the [Discussions](https://github.com/KotLut/01_Step_CPP/discussions)!
+
+---
+
+## 🚀 Roadmap
+
+- [x] Core gameplay
+- [x] Save system
+- [x] Achievements
+- [ ] Additional game modes
+- [ ] Localization improvements
+- [ ] Linux full support
