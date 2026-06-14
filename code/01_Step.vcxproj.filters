@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Saves">
+      <UniqueIdentifier>{b246bd37-8294-48ae-89df-3b219d921049}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code">
+      <UniqueIdentifier>{d748a834-e100-466b-a6f3-de66e53de9be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Engine">
+      <UniqueIdentifier>{4d56f594-0b4a-4032-8b9b-ddb0218a0c0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\UI">
+      <UniqueIdentifier>{7bd6d852-6351-4b9a-adc6-ef21e696f366}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\GameMode">
+      <UniqueIdentifier>{ee02caea-6d4e-4490-8584-427b84511810}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine.h">
+      <Filter>Code\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>Code\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="logos.h">
+      <Filter>Code\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMode.h">
+      <Filter>Code\GameMode</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Code\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="UI.cpp">
+      <Filter>Code\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMode.cpp">
+      <Filter>Code\GameMode</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="01_Step_Save.txt">
+      <Filter>Saves</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
